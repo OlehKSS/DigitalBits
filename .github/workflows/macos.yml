@@ -16,7 +16,7 @@ jobs:
           fetch-depth: '0'
       - name: Install deps
         run: |
-          echo "MACOSX_DEPLOYMENT_TARGET = $MACOSX_DEPLOYMENT_TARGET"
+#          echo "MACOSX_DEPLOYMENT_TARGET = $MACOSX_DEPLOYMENT_TARGET"
           brew install libsodium
           brew install libtool
           brew install automake
@@ -25,5 +25,5 @@ jobs:
       - name: Build the app    
         run: |
            ./autogen.sh
-           ./configure CXX="clang++ -std=c++17 -stdlib=libc++"
+           ./configure
            make -j2

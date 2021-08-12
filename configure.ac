@@ -116,8 +116,8 @@ AS_IF([test "x$enable_memcheck" = "xyes"], [
    AC_MSG_ERROR(LIBCXX_PATH must be set for memcheck to work)
   fi
 
-  CXXFLAGS="$CXXFLAGS -DMSAN_ENABLED"
-  LDFLAGS="$LDFLAGS -fsanitize=$sanitizeopts"
+  CXXFLAGS="$CXXFLAGS -stdlib=libc++ -DMSAN_ENABLED"
+  LDFLAGS="$LDFLAGS -stdlib=libc++ -fsanitize=$sanitizeopts"
 ])
 
 AS_IF([test x != "x$LIBCXX_PATH"], [
@@ -141,7 +141,7 @@ AS_IF([test x != "x$sanitizeopts"], [
   # Compilation should fail if these options are not supported
   sanflags="-fsanitize=$sanitizeopts -fno-omit-frame-pointer"
   CFLAGS="$CFLAGS $sanflags"
-  CXXFLAGS="$CXXFLAGS $sanflags"
+  CXXFLAGS="$CXXFLAGS -stdlib=libc++ $sanflags"
 
   # compile our own libraries when sanitizers are enabled
   libsodium_INTERNAL=yes
@@ -154,7 +154,7 @@ AC_ARG_ENABLE([extrachecks],
         [build with additional debugging checks enabled]))
 AS_IF([test "x$enable_extrachecks" = "xyes"], [
   # don't try to detect which c++ library we're using
-  CXXFLAGS="$CXXFLAGS -D_GLIBCXX_DEBUG=1 -D_GLIBCXX_SANITIZE_VECTOR=1 -D_LIBCPP_DEBUG=0"
+  CXXFLAGS="$CXXFLAGS -stdlib=libc++ -D_GLIBCXX_DEBUG=1 -D_GLIBCXX_SANITIZE_VECTOR=1 -D_LIBCPP_DEBUG=0"
 ])
 
 AC_ARG_ENABLE([ccache],
