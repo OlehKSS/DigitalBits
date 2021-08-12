@@ -193,11 +193,11 @@ AS_IF([test "x$enable_afl" = "xyes"], [
           [clang*], [AC_CHECK_PROGS([AFL_CLANG], [afl-clang-fast])
                      AC_CHECK_PROGS([AFL_CLANGPP], [afl-clang-fast++])
                      CC="afl-clang-fast"
-                     CXX="afl-clang-fast++ -std=c++17 -DAFL_LLVM_MODE=1"],
+                     CXX="afl-clang-fast++ -std=c++17 -stdlib=libc++ -DAFL_LLVM_MODE=1"],
           [gcc*],   [AC_CHECK_PROGS([AFL_GCC], [afl-gcc])
                      AC_CHECK_PROGS([AFL_GPP], [afl-g++])
                      CC="afl-gcc"
-                     CXX="afl-g++ -std=c++17"],
+                     CXX="afl-g++ -std=c++17 -stdlib=libc++"],
           [AC_MSG_ERROR([Don't know how to instrument CC=$CC with AFL])])
 ])
 AM_CONDITIONAL([USE_AFL_FUZZ], [test "x$enable_afl" == "xyes"])
