@@ -25,5 +25,5 @@ jobs:
       - name: Build the app    
         run: |
            ./autogen.sh
-           ./configure  
+           ./configure CXX="clang++ -std=c++11 -stdlib=libc++"
            make -j2
