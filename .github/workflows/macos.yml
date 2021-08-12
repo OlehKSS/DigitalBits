@@ -7,9 +7,9 @@ jobs:
   build:
     # MacOS latest is macos-10.15
     runs-on: macos-latest
-    env:
-      MACOSX_DEPLOYMENT_TARGET: 10.9
-      CXXFLAGS: "-stdlib=libc++" 
+    # env:
+    #   MACOSX_DEPLOYMENT_TARGET: 10.9
+    #   CXXFLAGS: "-stdlib=libc++" 
     steps:
       - uses: actions/checkout@v2
         with:
@@ -25,5 +25,5 @@ jobs:
       - name: Build the app    
         run: |
            ./autogen.sh
-           ./configure CXX="clang++ -std=c++11 -stdlib=libc++"
+           ./configure CXX="clang++ -std=c++17 -stdlib=libc++"
            make -j2
