@@ -16,7 +16,6 @@ jobs:
           fetch-depth: '0'
       - name: Install deps
         run: |
-#          echo "MACOSX_DEPLOYMENT_TARGET = $MACOSX_DEPLOYMENT_TARGET"
           brew install libsodium
           brew install libtool
           brew install automake
