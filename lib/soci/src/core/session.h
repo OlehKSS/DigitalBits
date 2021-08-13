@@ -41,7 +41,7 @@ class SOCI_DECL session
 {
 private:
 
-    void set_query_transformation_(soci::cxx_details::auto_ptr<details::query_transformation_function> qtf);
+    void set_query_transformation_(soci::cxx_details::auto_ptr<details::query_transformation_function>& qtf);
 
 public:
     session();
