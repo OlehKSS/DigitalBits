@@ -21,8 +21,7 @@ jobs:
           brew install libtool
           brew install automake
           brew install pkg-config
-          brew install libpqxx 
-          /sbin/ldconfig -p | grep stdc++
+          brew install libpqxx
       - name: Build the app    
         run: |
            ./autogen.sh

@@ -32,23 +32,23 @@ AC_DEFUN([AX_FRESH_COMPILER],
     # old/broken libstdc++, which we often get if there's an old g++ install
     # kicking around. Unfortunately there's no way to test this directly; we
     # try a handful of tell-tale C++11 features completed in 4.9 instead.
-    AC_MSG_CHECKING([for a sufficiently-new libstdc++])
-    AC_COMPILE_IFELSE([
-        AC_LANG_PROGRAM(
-            [
-                [#include <cstddef>]
-                [#include <new>]
-                [#include <exception>]
-            ],
-            [
-                auto a = sizeof(std::max_align_t);
-                auto b = std::get_new_handler();
-                auto c = std::get_terminate();
-                auto d = std::get_unexpected();
-            ]
-        )],
-        [AC_MSG_RESULT(yes)],
-        [AC_MSG_ERROR([missing new C++11 features, probably libstdc++ < 4.9])
-    ])
+    # AC_MSG_CHECKING([for a sufficiently-new libstdc++])
+    # AC_COMPILE_IFELSE([
+        # AC_LANG_PROGRAM(
+           #  [
+                # [#include <cstddef>]
+                # [#include <new>]
+                # [#include <exception>]
+            # ],
+           #  [
+                # auto a = sizeof(std::max_align_t);
+                # auto b = std::get_new_handler();
+                # auto c = std::get_terminate();
+                # auto d = std::get_unexpected();
+           #  ]
+        # )],
+        # [AC_MSG_RESULT(yes)],
+        # [AC_MSG_ERROR([missing new C++11 features, probably libstdc++ < 4.9])
+    # ])
     AC_LANG_POP([C++])
 ])
