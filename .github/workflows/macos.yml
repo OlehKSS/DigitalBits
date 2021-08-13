@@ -10,6 +10,7 @@ jobs:
     # env:
     #   MACOSX_DEPLOYMENT_TARGET: 10.9
     #   CXXFLAGS: "-stdlib=libc++" 
+    # bew install gcc doesn't help
     steps:
       - uses: actions/checkout@v2
         with:
@@ -21,7 +22,7 @@ jobs:
           brew install automake
           brew install pkg-config
           brew install libpqxx 
-          brew install gcc
+          /sbin/ldconfig -p | grep stdc++
       - name: Build the app    
         run: |
            ./autogen.sh
