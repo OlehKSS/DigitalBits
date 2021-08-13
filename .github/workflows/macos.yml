@@ -1,0 +1,28 @@
+name: MacOS Build CXX17
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    # MacOS latest is macos-10.15
+    runs-on: macos-latest
+    # env:
+    #   MACOSX_DEPLOYMENT_TARGET: 10.9
+    #   CXXFLAGS: "-stdlib=libc++" 
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - name: Install deps
+        run: |
+          brew install libsodium
+          brew install libtool
+          brew install automake
+          brew install pkg-config
+          brew install libpqxx 
+      - name: Build the app    
+        run: |
+           ./autogen.sh
+           ./configure
+           make -j2
