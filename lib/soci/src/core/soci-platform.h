@@ -56,4 +56,15 @@ namespace std {
 #endif // _MSC_VER >= 1300
 #endif // _MSC_VER
 
+namespace soci
+{
+
+namespace cxx_details
+{
+    template <typename T>
+    using auto_ptr = std::unique_ptr<T>;
+} // namespace cxx_details
+
+} // namespace soci
+
 #endif // SOCI_PLATFORM_H_INCLUDED
